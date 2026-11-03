@@ -1,0 +1,60 @@
+<!--
+  Copyright (c) 2026 Cisco Systems, Inc. and/or its affiliates
+
+  This source code is licensed under the MIT license found in the
+  LICENSE file in the root directory of this source tree.
+-->
+<!DOCTYPE html>
+<html lang="en" data-theme="LIGHT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Retro Board</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <!-- Webex Embedded Apps v2 SDK (loads before app.js; defer preserves order) -->
+  <script src="https://unpkg.com/@webex/embedded-app-sdk@latest" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <h1>Team Retro Board</h1>
+      <p class="subtitle">Hi <span id="greeting">there</span> — add your thoughts below.</p>
+      <div class="header-controls">
+        <button id="share-btn" type="button">Share with everyone</button>
+        <button id="timer-btn" type="button">Start 5-min timer</button>
+        <span id="timer-display" class="timer" hidden>05:00</span>
+        <span id="theme-badge" class="theme-badge">LIGHT</span>
+      </div>
+      <p id="sync-status" class="sync-status" role="status" aria-live="polite"></p>
+    </header>
+
+    <form id="add-form" class="add-form">
+      <textarea id="card-text" placeholder="What's on your mind?" rows="2"></textarea>
+      <div class="add-form-row">
+        <select id="column-select" aria-label="Choose a column">
+          <option value="start">Start / Went well</option>
+          <option value="stop">Stop</option>
+          <option value="continue">Continue</option>
+        </select>
+        <button type="submit">Add card</button>
+      </div>
+    </form>
+
+    <main class="board">
+      <section class="column" data-column="start">
+        <h2 class="column-title">Start / Went well <span class="column-count">0</span></h2>
+        <ul class="card-list"></ul>
+      </section>
+      <section class="column" data-column="stop">
+        <h2 class="column-title">Stop <span class="column-count">0</span></h2>
+        <ul class="card-list"></ul>
+      </section>
+      <section class="column" data-column="continue">
+        <h2 class="column-title">Continue <span class="column-count">0</span></h2>
+        <ul class="card-list"></ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
